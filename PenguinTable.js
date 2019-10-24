@@ -149,7 +149,7 @@ var addfinalCol = function(rows, txt)
         .text(txt)
         .attr("class", function(txt)
               {
-                if (txt < "70") return "bad"; else return "good";
+                if (txt < 70) return "bad"; else return "good";
         });
 }
 
