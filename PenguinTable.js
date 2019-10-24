@@ -143,6 +143,16 @@ var singleRow = function(PenguinInfo, Original)
         })
 }
 
+var addfinalCol = function(rows, txt)
+{
+    rows.append("td")
+        .text(txt)
+        .attr("class", function(txt)
+              {
+                if (txt < "70") return "bad"; else return "good";
+        });
+}
+
 var drawTable = function (PenguinInfo)
 {
     d3.selectAll("tbody *").remove();
@@ -163,5 +173,5 @@ var drawTable = function (PenguinInfo)
     addCol(rows, function(penguin){return penguin.quizmean;})
     addCol(rows, function(penguin){return penguin.HWmean;})
     addCol(rows, function(penguin){return penguin.testmean;})
-    addCol(rows, function(penguin){return penguin.final;})
+    addfinalCol(rows, function(penguin){return penguin.final;})
 }
