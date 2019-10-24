@@ -143,14 +143,11 @@ var singleRow = function(PenguinInfo, Original)
         })
 }
 
-var addfinalCol = function(rows, txt)
+var addfinalCol = function(rows, txt, stat)
 {
     rows.append("td")
         .text(txt)
-        .attr("class", function(txt)
-              {
-                if (txt < 70) return "bad"; else return "good";
-        });
+        .attr("class", stat);
 }
 
 var drawTable = function (PenguinInfo)
@@ -173,5 +170,5 @@ var drawTable = function (PenguinInfo)
     addCol(rows, function(penguin){return penguin.quizmean;})
     addCol(rows, function(penguin){return penguin.HWmean;})
     addCol(rows, function(penguin){return penguin.testmean;})
-    addfinalCol(rows, function(penguin){return penguin.final;})
+    addfinalCol(rows, function(penguin){return penguin.final;}, function(penguin){if (penguin.final < 70) return "bad"; else return "good";})
 }
