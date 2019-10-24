@@ -56,13 +56,90 @@ var sortCol = function(PenguinInfo, col, accessor)
         })
 }
 
+var createp = function(box)
+{
+    box.append("p")
+        .text(function(d){return "Day: " + d.day;})
+    
+    box.append("p")
+        .text(function(d){return "Grade: " + d.grade;})
+    
+    box.append("p")
+        .text(function(d){return "Max: " + d.max;})
+}
+
+var show = function(PenguinInfo, Original, index)
+{
+    var box = d3.select("body");
+    var penguin = Original[index];
+    
+    box.append("h1")
+        .text("Penguin")
+    
+    box.append("img")
+        .attr("src", "penguins/" + penguin.picture);
+    
+    box.append("h1")
+        .text("Final")
+    
+    var final = 
+        box.append("div")
+        .selectAll("div")
+        .data(penguin.final)
+        .enter()
+        .append("div")
+    
+    createp(final);
+    
+    box.append("h1")
+        .text("Homework")
+    
+    var homework = 
+        box.append("div")
+        .selectAll("div")
+        .data(penguin.homework)
+        .enter()
+        .append("div")
+    
+    createp(homework);
+    
+    box.append("h1")
+        .text("Quizes")
+    
+    var quizes = 
+        box.append("div")
+        .selectAll("div")
+        .data(penguin.quizes)
+        .enter()
+        .append("div")
+    
+    createp(quizes);
+    
+    box.append("h1")
+        .text("Test")
+    
+    var test = 
+        box.append("div")
+        .selectAll("div")
+        .data(penguin.test)
+        .enter()
+        .append("div")
+    
+    createp(test);
+    
+    box.append("button")
+        .text("Back")
+        .on("click", function(d) 
+            { drawTable(PenguinInfo) });
+}
+
 var singleRow = function(PenguinInfo, Original)
 {
-    d3.selectAll("tr")
+    d3.selectAll("td")
         .on("click", function(d)
         {
-            d3.selectAll("*").remove();
-            d3.select("body").append("p").text("Hi");
+            d3.selectAll("body *").remove();
+            show(PenguinInfo, Original, d.index);
         })
 }
 

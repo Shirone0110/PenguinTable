@@ -1,0 +1,34 @@
+td, th
+{
+    padding: 10px;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+table
+{
+    margin: auto;
+}
+
+th
+{
+    font-size: 24px;
+    background-color: #00ccff;
+}
+
+td
+{
+    font-size: 20px;
+    background-color: #ccf5ff;
+}
+
+img
+{
+    height: 150px;
+    width: 150px;
+}
+
+div 
+{
+    border: 1px solid #000000;
+}
